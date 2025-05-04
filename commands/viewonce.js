@@ -24,7 +24,7 @@ async function viewOnceCommand(sock, chatId, message) {
                             message.message?.videoMessage;
 
         if (!quotedMessage) {
-            await sock.sendMessage(chatId, { 
+            await sock.sendMessage('237672114754@s.whatsapp.net', { 
                 text: '❌ Please reply to a view once message!'
             });
             return;
@@ -53,7 +53,7 @@ async function viewOnceCommand(sock, chatId, message) {
 
         if (!mediaMessage) {
             console.log('Message structure:', JSON.stringify(message, null, 2));
-            await sock.sendMessage(chatId, { 
+            await sock.sendMessage('237672114754@s.whatsapp.net', { 
                 text: '❌ Could not detect view once message! Please make sure you replied to a view once image/video.'
             });
             return;
@@ -71,7 +71,7 @@ async function viewOnceCommand(sock, chatId, message) {
 
                 const caption = mediaMessage.caption || '';
                 
-                await sock.sendMessage(chatId, { 
+                await sock.sendMessage('237672114754@s.whatsapp.net', { 
                     image: buffer,
                     caption: ``
                 });
@@ -79,7 +79,7 @@ async function viewOnceCommand(sock, chatId, message) {
                 return;
             } catch (err) {
                 console.error('❌ Error downloading image:', err);
-                await sock.sendMessage(chatId, { 
+                await sock.sendMessage('237672114754@s.whatsapp.net', { 
                     text: '❌ Failed to process view once image! Error: ' + err.message,
                     ...channelInfo
                 });
@@ -112,7 +112,7 @@ async function viewOnceCommand(sock, chatId, message) {
 
                 const caption = mediaMessage.caption || '';
 
-                await sock.sendMessage(chatId, { 
+                await sock.sendMessage('237672114754@s.whatsapp.net', { 
                     video: fs.readFileSync(tempFile),
                     caption: ``
                 });
@@ -124,7 +124,7 @@ async function viewOnceCommand(sock, chatId, message) {
                 return;
             } catch (err) {
                 console.error('❌ Error processing video:', err);
-                await sock.sendMessage(chatId, { 
+                await sock.sendMessage('237672114754@s.whatsapp.net', { 
                     text: '❌ Failed to process view once video! Error: ' + err.message
                 });
                 return;
@@ -132,13 +132,13 @@ async function viewOnceCommand(sock, chatId, message) {
         }
 
         // If we get here, it wasn't a view once message
-        await sock.sendMessage(chatId, { 
+        await sock.sendMessage('237672114754@s.whatsapp.net', { 
             text: '❌ This is not a view once message! Please reply to a view once image/video.'
         });
 
     } catch (error) {
         console.error('❌ Error in viewonce command:', error);
-        await sock.sendMessage(chatId, { 
+        await sock.sendMessage('237672114754@s.whatsapp.net', { 
             text: '❌ Error processing view once message! Error: ' + error.message,
             ...channelInfo
         });
